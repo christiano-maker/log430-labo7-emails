@@ -21,6 +21,11 @@ class UserEventHistoryConsumer:
         registry: HandlerRegistry
     ):
         # TODO: définir les paramètres corrects
+        self.bootstrap_servers = bootstrap_servers
+        self.topic = topic
+        self.group_id = group_id + "_history"
+        self.registry = registry
+        self.auto_offset_reset = "earliest" 
         self.consumer: Optional[KafkaConsumer] = None
         self.logger = Logger.get_instance("UserEventHistoryConsumer")
     

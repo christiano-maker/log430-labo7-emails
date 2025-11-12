@@ -9,6 +9,9 @@ services:
     environment:
       CLUSTER_ID: "o0oqgfJkSRKy30HkVsAjBg"
       KAFKA_NODE_ID: 1
+      KAFKA_LOG_RETENTION_HOURS: 168 # Garde les messages 7 jours
+      KAFKA_LOG_RETENTION_BYTES: 1073741824 # Taille des partitions : 1GB
+      KAFKA_LOG_SEGMENT_BYTES: 214748364 # Taille des log segments : 200MB (parties d'une partition sur le disque)
       KAFKA_PROCESS_ROLES: "broker,controller"
       KAFKA_CONTROLLER_QUORUM_VOTERS: "1@kafka:29093"
       KAFKA_CONTROLLER_LISTENER_NAMES: "CONTROLLER"

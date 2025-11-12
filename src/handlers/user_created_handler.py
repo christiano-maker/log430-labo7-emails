@@ -29,12 +29,21 @@ class UserCreatedHandler(EventHandler):
         name = event_data.get('name')
         email = event_data.get('email')
         datetime = event_data.get('datetime')
+        types = event_data.get('user_type_id')
+        message = ""
+        if types == 1:
+            message = "Welcome dear walking wallet!"
+        elif types == 2:
+            message = "Be ready to be overworked and underpaid"
+        else:
+            message = "Welcome, mighty manager!"    
 
         current_file = Path(__file__)
         project_root = current_file.parent.parent   
         with open(project_root / "templates" / "welcome_client_template.html", 'r') as file:
             html_content = file.read()
             html_content = html_content.replace("{{user_id}}", str(user_id))
+            html_content = html_content.replace("{{message}}", message)
             html_content = html_content.replace("{{name}}", name)
             html_content = html_content.replace("{{email}}", email)
             html_content = html_content.replace("{{creation_date}}", datetime)
