@@ -10,6 +10,7 @@ from handlers.base import EventHandler
 from typing import Dict, Any
 
 
+
 class UserCreatedHandler(EventHandler):
     """Handles UserCreated events"""
     
